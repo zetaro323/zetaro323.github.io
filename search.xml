@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[使用Hexo搭建GitHub Pages]]></title>
+    <url>%2F2018%2F05%2F13%2F%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BAGitHub-Pages%2F</url>
+    <content type="text"><![CDATA[预备环境搭建 预备环境搭建 主题选择 主题更换为NexT NexT配置文档 找不到git username问题：通过将git版本升级到最新（windows 2.17.0）解决 部署到GitHub Pages仓库master分支（默认分支）的内容为hexo/public hexo目录下的内容可手动部署到Pages仓库的hexo分支进行保存 写博客 命令:hexo new “blog name” 文件位置： hexo/source/_posts 生成：hexo g 本地启动：hexo s 部署到GitHub：hexo d 参考文档 删博客 删除 source/_posts下文件 hexo clean hexo g hexo s hexo d 常用命令 hexo clean ：清理 hexo g ：生成 hexo d ：部署 hexo s ：启动本地server （localhost：4000） hexo new [layout] &lt;titile&gt;1hexo有三种默认布局：post、page、draft 默认为post]]></content>
+      <categories>
+        <category>环境搭建</category>
+        <category>GitHub Pages</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>GitHub Pages</tag>
+      </tags>
+  </entry>
+</search>
