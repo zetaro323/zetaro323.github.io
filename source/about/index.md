@@ -5,4 +5,5 @@ type: about
 
 ---
 
+Just Blog
 
