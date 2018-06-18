@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="JVM,内存模型," />
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="JVM 运行时数据区数据区划分 程序计数器 方法区 栈 虚拟机栈 本地方法栈   堆  各区域要点程序计数器线程私有，当前线程所执行的字节码的指令指示器。 方法区线程共享，存储已被虚拟机加载的类信息、常量、静态变量、编译后的代码等数据,是堆的一个逻辑部分，常量池是方法区的一部分。由于方法区的对象回收较为严格，一般回收算法有别于堆区，不同版本虚拟机实现不同。通过MaxPermSize 设置最大方法区">
+<meta name="keywords" content="JVM,内存模型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM笔记-内存模型">
+<meta property="og:url" content="http://yoursite.com/2018/06/18/JVM笔记-内存模型/index.html">
 <meta property="og:site_name" content="Blog">
+<meta property="og:description" content="JVM 运行时数据区数据区划分 程序计数器 方法区 栈 虚拟机栈 本地方法栈   堆  各区域要点程序计数器线程私有，当前线程所执行的字节码的指令指示器。 方法区线程共享，存储已被虚拟机加载的类信息、常量、静态变量、编译后的代码等数据,是堆的一个逻辑部分，常量池是方法区的一部分。由于方法区的对象回收较为严格，一般回收算法有别于堆区，不同版本虚拟机实现不同。通过MaxPermSize 设置最大方法区">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-06-18T13:33:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blog">
+<meta name="twitter:title" content="JVM笔记-内存模型">
+<meta name="twitter:description" content="JVM 运行时数据区数据区划分 程序计数器 方法区 栈 虚拟机栈 本地方法栈   堆  各区域要点程序计数器线程私有，当前线程所执行的字节码的指令指示器。 方法区线程共享，存储已被虚拟机加载的类信息、常量、静态变量、编译后的代码等数据,是堆的一个逻辑部分，常量池是方法区的一部分。由于方法区的对象回收较为严格，一般回收算法有别于堆区，不同版本虚拟机实现不同。通过MaxPermSize 设置最大方法区">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/18/JVM笔记-内存模型/"/>
 
 
 
 
 
-  <title>Blog</title>
+  <title>JVM笔记-内存模型 | Blog</title>
   
 
 
@@ -140,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -278,9 +282,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -310,9 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/18/JVM笔记-内存模型/" itemprop="url">JVM笔记-内存模型</a></h1>
+          <h1 class="post-title" itemprop="name headline">JVM笔记-内存模型</h1>
         
 
         <div class="post-meta">
@@ -396,9 +398,7 @@
       
 
       
-        
-          
-            <h1 id="JVM-运行时数据区"><a href="#JVM-运行时数据区" class="headerlink" title="JVM 运行时数据区"></a>JVM 运行时数据区</h1><h2 id="数据区划分"><a href="#数据区划分" class="headerlink" title="数据区划分"></a>数据区划分</h2><ul>
+        <h1 id="JVM-运行时数据区"><a href="#JVM-运行时数据区" class="headerlink" title="JVM 运行时数据区"></a>JVM 运行时数据区</h1><h2 id="数据区划分"><a href="#数据区划分" class="headerlink" title="数据区划分"></a>数据区划分</h2><ul>
 <li>程序计数器</li>
 <li>方法区</li>
 <li>栈<ul>
@@ -432,8 +432,6 @@
 <p>周志明. 深入理解Java虚拟机[M]. 机械工业出版社, 2013.</p>
 </blockquote>
 
-          
-        
       
     </div>
     
@@ -448,371 +446,38 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/20/Spring-Aop/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zetaro">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/20/Spring-Aop/" itemprop="url">Spring AOP</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-20T22:08:00+08:00">
-                2018-05-20
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2018-05-20T22:08:00+08:00">
-                2018-05-20
-              </time>
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Spring/" itemprop="url" rel="index">
-                    <span itemprop="name">Spring</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/JVM/" rel="tag"># JVM</a>
           
-
+            <a href="/tags/内存模型/" rel="tag"># 内存模型</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h1><ul>
-<li>AOP：面向切面编程</li>
-<li>Advice（通知）：定义连接点做什么，为切面增强提供织入接口</li>
-<li>Pointcut（切点）：决定Advice通知应该作用于哪个连接点</li>
-<li>Advisor（通知器）：用于关联Advice和Pointcut，定义某个通知应该作用于哪个切点</li>
-<li>实现：动态代理（JDK Proxy或CGLIB）、IOC</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/13/使用Hexo搭建GitHub-Pages/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zetaro">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/13/使用Hexo搭建GitHub-Pages/" itemprop="url">使用Hexo搭建GitHub Pages</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-13T19:59:35+08:00">
-                2018-05-13
-              </time>
+              <a href="/2018/05/20/Spring-Aop/" rel="next" title="Spring AOP">
+                <i class="fa fa-chevron-left"></i> Spring AOP
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2018-05-20T16:00:23+08:00">
-                2018-05-20
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/环境搭建/" itemprop="url" rel="index">
-                    <span itemprop="name">环境搭建</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/环境搭建/GitHub-Pages/" itemprop="url" rel="index">
-                    <span itemprop="name">GitHub Pages</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h2 id="预备环境搭建"><a href="#预备环境搭建" class="headerlink" title="预备环境搭建"></a>预备环境搭建</h2><ul>
-<li><a href="https://segmentfault.com/a/1190000008074407" title="hexo 环境搭建" target="_blank" rel="noopener">预备环境搭建</a></li>
-</ul>
-<h2 id="主题选择"><a href="#主题选择" class="headerlink" title="主题选择"></a>主题选择</h2><ul>
-<li><a href="https://blog.csdn.net/Hoshea_chx/article/details/78826689" target="_blank" rel="noopener">主题更换为NexT</a></li>
-<li><a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT配置文档</a></li>
-<li>找不到git username问题：通过将git版本升级到最新（windows 2.17.0）解决</li>
-<li>部署到GitHub Pages仓库master分支（默认分支）的内容为hexo/public</li>
-<li>hexo目录下的内容可手动部署到Pages仓库的hexo分支进行保存</li>
-</ul>
-<h2 id="写博客"><a href="#写博客" class="headerlink" title="写博客"></a>写博客</h2><ul>
-<li>命令:hexo new “blog name”</li>
-<li>文件位置： hexo/source/_posts</li>
-<li>生成：hexo g</li>
-<li>本地启动：hexo s</li>
-<li>部署到GitHub：hexo d</li>
-<li><a href="https://hexo.io/zh-cn/docs/writing.html" target="_blank" rel="noopener">参考文档</a></li>
-</ul>
-<h2 id="删博客"><a href="#删博客" class="headerlink" title="删博客"></a>删博客</h2><ul>
-<li>删除 source/_posts下文件</li>
-<li>hexo clean</li>
-<li>hexo g</li>
-<li>hexo s</li>
-<li>hexo d</li>
-</ul>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ol>
-<li>hexo clean ：清理</li>
-<li>hexo g ：生成</li>
-<li>hexo d ：部署</li>
-<li>hexo s ：启动本地server （localhost：4000）</li>
-<li><code>hexo new [layout] &lt;titile&gt;</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo有三种默认布局：post、page、draft 默认为post</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -822,10 +487,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -833,6 +499,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -853,8 +523,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -914,6 +593,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JVM-运行时数据区"><span class="nav-number">1.</span> <span class="nav-text">JVM 运行时数据区</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据区划分"><span class="nav-number">1.1.</span> <span class="nav-text">数据区划分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各区域要点"><span class="nav-number">1.2.</span> <span class="nav-text">各区域要点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#程序计数器"><span class="nav-number">1.2.1.</span> <span class="nav-text">程序计数器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法区"><span class="nav-number">1.2.2.</span> <span class="nav-text">方法区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#栈"><span class="nav-number">1.2.3.</span> <span class="nav-text">栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆"><span class="nav-number">1.2.4.</span> <span class="nav-text">堆</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象的内存布局"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">对象的内存布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象的访问"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">对象的访问</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1054,6 +749,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
